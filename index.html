@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trilha das Sílabas — Kit de Leitura 1º Ano</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --tinta:#1D2B4F;
+    --papel:#FFFDF6;
+    --pauta:#D7E3F4;
+    --uva:#6B3FA0;
+    --manga:#F2A104;
+    --folha:#2E9E6B;
+    --giz:#F1ECE0;
+    --raio:14px;
+    --max:1040px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Nunito',system-ui,sans-serif;
+    color:var(--tinta);
+    background:var(--papel);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 22px}
+  h1,h2,h3,.chip{font-family:'Baloo 2',system-ui,sans-serif;line-height:1.15}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:72px 0 64px;
+    background:
+      repeating-linear-gradient(to bottom,transparent 0 39px,var(--pauta) 39px 40px),
+      var(--papel);
+    border-bottom:3px solid var(--tinta);
+    overflow:hidden;
+  }
+  .eyebrow{
+    display:inline-block;font-weight:700;font-size:.8rem;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--uva);
+    background:#fff;border:2px solid var(--uva);border-radius:999px;
+    padding:5px 14px;margin-bottom:22px;
+  }
+  .silabas{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px}
+  .chip{
+    font-size:clamp(1.9rem,6.4vw,3.4rem);font-weight:800;
+    background:#fff;border:3px solid var(--tinta);border-radius:var(--raio);
+    padding:2px 14px 6px;
+    box-shadow:4px 5px 0 var(--tinta);
+    transform:rotate(var(--r,0deg));
+  }
+  .chip:nth-child(3n){color:var(--uva)}
+  .chip:nth-child(3n+1){color:var(--manga)}
+  .chip:nth-child(3n+2){color:var(--folha)}
+  .hero p.lead{
+    font-size:1.16rem;max-width:34rem;margin:26px 0 30px;
+  }
+  .acoes{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  .btn{
+    display:inline-block;font-family:'Baloo 2',sans-serif;font-weight:800;
+    font-size:1.05rem;text-decoration:none;border-radius:var(--raio);
+    padding:14px 26px;border:3px solid var(--tinta);
+    background:var(--manga);color:var(--tinta);
+    box-shadow:4px 5px 0 var(--tinta);
+    transition:transform .12s ease,box-shadow .12s ease;
+  }
+  .btn:hover,.btn:focus-visible{transform:translate(2px,3px);box-shadow:1px 1px 0 var(--tinta)}
+  .btn.vazado{background:#fff}
+  .nota{font-size:.92rem;font-weight:600;opacity:.75}
+
+  /* ---------- SEÇÕES ---------- */
+  section{padding:64px 0}
+  h2{font-size:clamp(1.6rem,4vw,2.3rem);margin-bottom:10px}
+  .sub{margin-bottom:34px;max-width:38rem}
+  .grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+  .card{
+    background:#fff;border:3px solid var(--tinta);border-radius:var(--raio);
+    padding:22px;box-shadow:4px 5px 0 var(--giz);
+  }
+  .card h3{font-size:1.25rem;margin-bottom:6px}
+  .card .num{
+    font-family:'Baloo 2',sans-serif;font-weight:800;font-size:.85rem;
+    color:var(--uva);letter-spacing:.1em;text-transform:uppercase;
+  }
+  .conteudo{background:var(--giz);border-top:3px solid var(--tinta);border-bottom:3px solid var(--tinta)}
+  .lista{list-style:none;display:grid;gap:12px;max-width:44rem}
+  .lista li{
+    background:#fff;border:2px solid var(--tinta);border-radius:var(--raio);
+    padding:14px 18px;font-weight:600;
+  }
+  .lista li b{font-family:'Baloo 2',sans-serif}
+
+  blockquote{
+    background:#fff;border:3px solid var(--tinta);border-radius:var(--raio);
+    padding:24px;max-width:38rem;box-shadow:4px 5px 0 var(--folha);
+    font-size:1.08rem;
+  }
+  blockquote footer{margin-top:12px;font-weight:700;font-size:.92rem;opacity:.8}
+
+  .oferta{text-align:center}
+  .preco{
+    font-family:'Baloo 2',sans-serif;font-weight:800;
+    font-size:clamp(2.6rem,9vw,4rem);color:var(--uva);line-height:1;margin:8px 0 4px;
+  }
+  .riscado{text-decoration:line-through;opacity:.55;font-weight:700}
+  .oferta .acoes{justify-content:center;margin-top:26px}
+
+  details{
+    background:#fff;border:2px solid var(--tinta);border-radius:var(--raio);
+    padding:14px 18px;margin-bottom:12px;max-width:44rem;
+  }
+  summary{font-family:'Baloo 2',sans-serif;font-weight:600;font-size:1.08rem;cursor:pointer}
+  details p{margin-top:10px}
+
+  footer.rodape{
+    border-top:3px solid var(--tinta);padding:28px 0;font-size:.9rem;text-align:center;
+  }
+  a{color:var(--uva)}
+  :focus-visible{outline:3px solid var(--uva);outline-offset:3px}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Kit para imprimir · 1º ano</span>
+    <div class="silabas" aria-hidden="true">
+      <span class="chip" style="--r:-2deg">TRI</span>
+      <span class="chip" style="--r:1deg">LHA</span>
+      <span class="chip" style="--r:-1deg">DAS</span>
+      <span class="chip" style="--r:2deg">SÍ</span>
+      <span class="chip" style="--r:-2deg">LA</span>
+      <span class="chip" style="--r:1deg">BAS</span>
+    </div>
+    <h1 style="position:absolute;left:-9999px">Trilha das Sílabas — Kit de Leitura 1º Ano</h1>
+    <p class="lead">30 fichas silábicas prontas para imprimir, recortar e plastificar. A criança monta a palavra com as mãos e lê antes mesmo de escrever.</p>
+    <div class="acoes">
+      <a class="btn" href="#comprar">Quero o kit completo</a>
+      <a class="btn vazado" href="#conteudo">Ver o que vem dentro</a>
+    </div>
+    <p class="nota" style="margin-top:16px">Download imediato em PDF · Versão colorida e versão econômica</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>Para quem trava na hora de juntar as sílabas</h2>
+    <p class="sub">O kit trabalha a sílaba como peça: a criança manipula, testa combinações e descobre a palavra sozinha.</p>
+    <div class="grid">
+      <div class="card">
+        <span class="num">Ficha</span>
+        <h3>Uma sílaba por vez</h3>
+        <p>Sequência que vai das sílabas simples às complexas, sem pular etapas.</p>
+      </div>
+      <div class="card">
+        <span class="num">Imagem</span>
+        <h3>Uma ilustração por palavra</h3>
+        <p>A imagem sustenta o sentido enquanto a leitura ainda é lenta.</p>
+      </div>
+      <div class="card">
+        <span class="num">Guia</span>
+        <h3>Passo a passo do professor</h3>
+        <p>Como aplicar em sala, em dupla e no reforço individual.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="conteudo" id="conteudo">
+  <div class="wrap">
+    <h2>O que vem no arquivo</h2>
+    <p class="sub">Um PDF só, organizado para você imprimir apenas o que vai usar hoje.</p>
+    <ul class="lista">
+      <li><b>30 fichas silábicas</b> — para imprimir, recortar e plastificar</li>
+      <li><b>Versão colorida</b> — para plastificar e usar o ano inteiro</li>
+      <li><b>Versão econômica</b> — traço preto, gasta pouca tinta</li>
+      <li><b>Guia do professor</b> — aplicação em sala e no reforço</li>
+      <li><b>Cartelas de palavras</b> — com uma ilustração por palavra</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <blockquote>
+      Usei as fichas na roda de leitura e três alunos que só copiavam começaram a montar palavras sozinhos na mesma semana.
+      <footer>— Professora do 1º ano, rede municipal</footer>
+    </blockquote>
+  </div>
+</section>
+
+<section class="oferta" id="comprar">
+  <div class="wrap">
+    <h2>Kit de Leitura — Edição Completa</h2>
+    <p class="riscado">de R$ 67</p>
+    <p class="preco">R$ 37</p>
+    <p class="nota">Pagamento único · Acesso vitalício ao arquivo</p>
+    <div class="acoes">
+      <a class="btn" href="#">Comprar e baixar agora</a>
+    </div>
+    <p class="nota" style="margin-top:18px">7 dias de garantia. Não gostou, devolvemos o valor.</p>
+  </div>
+</section>
+
+<section class="conteudo">
+  <div class="wrap">
+    <h2>Dúvidas frequentes</h2>
+    <details><summary>Recebo material impresso?</summary><p>Não. É um arquivo digital em PDF que você imprime quantas vezes quiser.</p></details>
+    <details><summary>Serve para educação infantil?</summary><p>Sim, para crianças que já reconhecem as letras e estão começando a juntar sílabas.</p></details>
+    <details><summary>Preciso plastificar?</summary><p>Não é obrigatório. Plastificar só faz as fichas durarem mais de um ano letivo.</p></details>
+    <details><summary>Como recebo o arquivo?</summary><p>O link de download chega no seu e-mail logo após a confirmação do pagamento.</p></details>
+  </div>
+</section>
+
+<footer class="rodape">
+  <div class="wrap">
+    <p>Trilha das Sílabas · Material autoral · <a href="#comprar">Voltar para a oferta</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
